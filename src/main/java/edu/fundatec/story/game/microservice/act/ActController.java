@@ -20,14 +20,26 @@ public class ActController {
     }
 
     @PostMapping
-    public ResponseEntity<Act> saveAct(@RequestBody Act act) {
+    public ResponseEntity saveAct(@RequestBody Act act) {
         Act savedAct = actService.saveAct(act);
         return new ResponseEntity<>(savedAct, HttpStatus.CREATED);
     }
 
     @GetMapping("/{actId}")
-    public ResponseEntity<Act> findAct(@PathVariable String actId) {
+    public ResponseEntity findAct(@PathVariable String actId) {
         Act act = actService.findActById(actId);
+        return new ResponseEntity<>(act, HttpStatus.OK);
+    }
+
+    @GetMapping("/story/{storyId}/titles")
+    public ResponseEntity listActs(@PathVariable String storyId) {
+        List<ActDto> acts = actService.listActs(storyId);
+        return new ResponseEntity<>(acts, HttpStatus.OK);
+    }
+
+    @PostMapping("/{actId}/choices")
+    public ResponseEntity addChoice(@PathVariable String actId, @RequestBody Choice choice) {
+        Act act = actService.addChoice(actId, choice);
         return new ResponseEntity<>(act, HttpStatus.OK);
     }
 

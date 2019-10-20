@@ -28,4 +28,14 @@ public class ActService {
     public List<Act> findActsByStoryId(String storyId) {
         return actRepository.findActsByStoryId(storyId);
     }
+
+    public Act addChoice(String actId, Choice choice) {
+        Act act = findActById(actId);
+        act.addChoice(choice);
+        return actRepository.save(act);
+    }
+
+    public List<ActDto> listActs(String storyId) {
+        return actRepository.findActTitles(storyId);
+    }
 }

@@ -6,6 +6,7 @@ import lombok.Getter;
 public class Choice {
 
     private String description;
+    private String toAct;
     private String actId;
 
 }

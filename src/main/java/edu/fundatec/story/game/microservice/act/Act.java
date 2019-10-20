@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -21,10 +22,23 @@ public class Act {
 
     @NotNull
     @NotEmpty
+    private String title;
+
+    @NotNull
+    @NotEmpty
     private String description;
 
     private String cover;
 
     private List<Choice> choices;
+
+    public Act () {
+        this.choices = new ArrayList<>();
+    }
+
+    public void addChoice(Choice choice) {
+        choices.add(choice);
+    }
+
 
 }
