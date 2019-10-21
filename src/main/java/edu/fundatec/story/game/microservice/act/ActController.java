@@ -48,4 +48,10 @@ public class ActController {
         List<Act> acts = actService.findActsByStoryId(storyId);
         return new ResponseEntity<>(acts, HttpStatus.OK);
     }
+
+    @PatchMapping("/{actId}/intro")
+    public ResponseEntity setActAsIntro(@PathVariable String actId) {
+        Act act = actService.setActAsIntro(actId);
+        return new ResponseEntity<>(act, HttpStatus.OK);
+    }
 }

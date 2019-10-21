@@ -38,4 +38,17 @@ public class ActService {
     public List<ActDto> listActs(String storyId) {
         return actRepository.findActTitles(storyId);
     }
+
+    public Act setActAsIntro(String id) {
+        Optional<Act> intro = actRepository.findActByIntroIsTrue();
+        intro.ifPresent(act -> {
+            act.setIntro(false);
+            actRepository.save(act);
+        });
+
+        Act act = findActById(id);
+        act.setIntro(true);
+        actRepository.save(act);
+        return act;
+    }
 }

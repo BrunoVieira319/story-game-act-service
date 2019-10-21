@@ -1,6 +1,7 @@
 package edu.fundatec.story.game.microservice.act;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -29,6 +30,9 @@ public class Act {
     private String description;
 
     private String cover;
+
+    @Setter
+    private boolean intro;
 
     private List<Choice> choices;
 
